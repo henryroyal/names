@@ -115,10 +115,11 @@ func main() {
 	log.Printf("download: %v last names", len(lastNames))
 
 	if !tableExists(dbName, "first_names", db) && !tableExists(dbName, "last_names", db) {
-		_, err := db.Query(createTablesQuery)
+		cursor, err := db.Query(createTablesQuery)
 		if err != nil {
 			log.Fatal(err)
 		}
+		defer cursor.Close()
 		log.Println("database: created name tables")
 	} else {
 		log.Println("database: found name tables")
