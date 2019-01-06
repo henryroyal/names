@@ -144,6 +144,7 @@ func main() {
 			log.Fatal(err)
 		}
 		cursor.Close()
-		log.Println("database: last names complete")
 	}
+	log.Println("database: last names complete")
+
 }
